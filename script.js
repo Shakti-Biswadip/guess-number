@@ -17,6 +17,7 @@ document.querySelector(".check").addEventListener("click", function () {
     const userGuess = Number(document.querySelector(".guess").value);
     if(userGuess === randomGenNum){
         document.querySelector(".message").innerHTML="You guessed it RIGHT";
+        document.querySelector("h1").innerHTML="GOOD JOB";
             document.querySelector(".number").innerHTML= randomGenNum;
             document.querySelector(".score").innerHTML=i++;
             let scoreOnly = document.querySelector(".score").innerHTML;
@@ -38,6 +39,7 @@ document.querySelector(".check").addEventListener("click", function () {
         document.querySelector(".message").innerHTML="WRONG, choose another Number";
         document.body.style.backgroundColor="red";
         document.querySelector(".number").innerHTML="❌";
+        document.querySelector("h1").innerHTML="WRONG";
 
         setTimeout(function(){
             resetGame();
