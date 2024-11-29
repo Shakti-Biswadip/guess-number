@@ -3,7 +3,7 @@
 //     console.log(typeof randomGenNum(), randomGenNum());}
    
     function randomNum (){
-        return(Number(Math.floor(Math.random()*5 + 1)));
+        return(Number(Math.floor(Math.random()*3 + 1)));
     }
     document.querySelector(".check").addEventListener("click",function(){
         console.log(randomNum());
@@ -19,17 +19,17 @@ document.querySelector(".check").addEventListener("click", function () {
         document.querySelector(".message").innerHTML="You guessed it RIGHT";
             document.querySelector(".number").innerHTML= randomGenNum;
             document.querySelector(".score").innerHTML=i++;
-            let scoreOnly = i;
+            let scoreOnly = document.querySelector(".score").innerHTML;
             document.querySelector(".highscore").innerHTML=scoreOnly;
             document.body.style.backgroundColor="blue";
             setTimeout(function(){
             resetGame();
         }, 1500);
     } 
-    else if(userGuess > 5 || userGuess < 1){
+    else if(userGuess > 3 || userGuess < 1){
         resetGame();
-        alert("select the number between 1 to 5");
-        document.querySelector(".message").innerHTML="please choose number Between 1 to 5";
+        alert("select the number between 1 to 3");
+        document.querySelector(".message").innerHTML="please choose number Between 1 to 3";
         document.querySelector(".number").innerHTML="??";
         document.querySelector("h1").innerHTML="choose your NUMBER,";
     }
