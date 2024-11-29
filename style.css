@@ -198,6 +198,7 @@ h1 {
     align-items: center;
     justify-content: center;
     bottom: 0px;
+    right: 10px;
   }
   .left {
     position: relative;
@@ -205,24 +206,34 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100px;
+    height: auto;
     margin: 5px;
+    width: 100%;
   }
   .guess {
     height: 30px;
     width: 90px;
     font-size: 20px;
     bottom: 20px;
+    margin: 0;
   }
   .right {
-    height: 110px;
+    height: auto;
+    margin: 0;
+    padding: 0;
     position: relative;
-    bottom: 200px;
+    bottom: 165px;
     display: inline-block;
     text-align: center;
   }
   main {
     height: 50vh;
+  }
+  .between{
+    margin: 2px;
+    padding: 2px;
+    right: 2px;
+    top: 6px;
   }
 
 }
