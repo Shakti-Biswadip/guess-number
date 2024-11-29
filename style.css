@@ -219,10 +219,11 @@ h1 {
   }
   .right {
     height: auto;
+    width: 100%;
     margin: 0;
     padding: 0;
     position: relative;
-    bottom: 165px;
+    bottom: 195px;
     display: inline-block;
     text-align: center;
   }
