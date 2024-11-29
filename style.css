@@ -159,19 +159,23 @@ h1 {
 
 @media (max-width: 450px){
     h1{
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 0;
     padding: 0;
   }
   .number{
-    margin: 0;
+    margin: 10px;
     padding: 5px;
+    border-radius: 20px;
+    right: 5px;
   }
   .btn{
     height: 30px;
-    width: 100px;
-    padding: 0;
+    width: 70px;
+    padding: 3px;
     margin: 3px;
+    font-size: 12px;
+    border-radius: 10px;
   }
   .between {
     font-size: 10px;
