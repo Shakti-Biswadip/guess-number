@@ -8,39 +8,42 @@
     document.querySelector(".check").addEventListener("click",function(){
         console.log(randomNum());
     });
-    let i = 1;
-    
 
-document.querySelector(".check").addEventListener("click", function(){
-    document.body.style.backgroundColor="blue";
-})
+    let i = 1;
+    let randomGenNum = randomNum();
+
 
 document.querySelector(".check").addEventListener("click", function () {
-    if(randomNum() === Number((document.querySelector(".guess").value))){
+    const userGuess = Number(document.querySelector(".guess").value);
+    if(userGuess === randomGenNum){
         document.querySelector(".message").innerHTML="You guessed it RIGHT";
+            document.querySelector(".number").innerHTML= randomGenNum;
+            document.querySelector(".score").innerHTML=i++;
+            let scoreOnly = i;
+            document.querySelector(".highscore").innerHTML=scoreOnly;
+            document.body.style.backgroundColor="blue";
             setTimeout(function(){
-                resetGame();
-            }, 1500);
-            document.querySelector(".number").innerHTML= randomNum();
-            Number(document.querySelector(".score").innerHTML=i++);
-
+            resetGame();
+        }, 1500);
     } 
-
-    else if(document.querySelector(".guess").value > 5 ||document.querySelector(".guess").value < 1){
-        alert("select the number between 1 to 5");
-        document.querySelector(".number").innerHTML= randomNum();
+    else if(userGuess > 5 || userGuess < 1){
         resetGame();
+        alert("select the number between 1 to 5");
+        document.querySelector(".message").innerHTML="please choose number Between 1 to 5";
         document.querySelector(".number").innerHTML="??";
-        document.querySelector(".message").innerHTML="please choose number Between 1 to 5"
+        document.querySelector("h1").innerHTML="choose your NUMBER,";
     }
 
     else{
         document.querySelector(".message").innerHTML="WRONG, choose another Number";
         document.body.style.backgroundColor="red";
         document.querySelector(".number").innerHTML="❌";
+
         setTimeout(function(){
             resetGame();
-        }, 1000);
+            document.querySelector("h1").innerHTML="Try Again! My number is, ";
+            document.querySelector(".number").innerHTML= randomNum();
+        }, 1500);
     }
 })
 
@@ -48,13 +51,11 @@ document.querySelector(".again").addEventListener("click", function(){
     location.reload();
 })
 
-if(randomNum() === Number((document.querySelector(".guess").value))){
-    document.querySelector(".message").innerHTML="You guessed it RIGHT";
-    location.reload();
-} 
 
 const resetGame = function(){
-    document.body.style.backgroundColor="grey";
-    document.querySelector(".message").innerHTML="The game has started"
+    document.body.style.backgroundColor="black";
+    document.querySelector(".message").innerHTML="The game has started";
+    document.querySelector(".guess").value = ""; 
+    randomGenNum = randomNum();
 }
 
