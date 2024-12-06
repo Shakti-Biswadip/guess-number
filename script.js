@@ -64,8 +64,8 @@ document.querySelector(".check").addEventListener("click", function(){
         }
     }
 
-    else if(guessNumber != secretNum) {
-        document.querySelector(".message").textContent="WRONG NUMBER";
+    else if(guessNumber > 3 || guessNumber < 0) {
+        document.querySelector(".message").textContent="PLEASE select NUM 1 to 3";
         document.querySelector(".number").textContent=secretNum;
     }
 
