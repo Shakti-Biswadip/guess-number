@@ -1,63 +1,83 @@
-'use strict';
-//    const randomGenNum = function() {Number(Math.floor(Math.random()*5 + 1))
-//     console.log(typeof randomGenNum(), randomGenNum());}
-   
-    function randomNum (){
-        return(Number(Math.floor(Math.random()*3 + 1)));
-    }
-    document.querySelector(".check").addEventListener("click",function(){
-        console.log(randomNum());
-    });
+/* method 2 */
+const secretNum = Math.floor(Math.random()*3)+1;
+let userScore = 0;
 
-    let i = 1;
-    let randomGenNum = randomNum();
+//body color modify
+const bodyGreen = function(){
+    document.body.style.backgroundColor="green";
+}
+const bodyRed = function(){
+    document.body.style.backgroundColor="red";
+}
 
+console.log(secretNum);
 
-document.querySelector(".check").addEventListener("click", function () {
-    const userGuess = Number(document.querySelector(".guess").value);
-    if(userGuess === randomGenNum){
-        document.querySelector(".message").innerHTML="You guessed it RIGHT";
-        document.querySelector("h1").innerHTML="GOOD JOB";
-            document.querySelector(".number").innerHTML= randomGenNum;
-            document.querySelector(".score").innerHTML=i++;
-            let scoreOnly = document.querySelector(".score").innerHTML;
-            document.querySelector(".highscore").innerHTML=scoreOnly;
-            document.body.style.backgroundColor="blue";
-            setTimeout(function(){
-            resetGame();
-        }, 1500);
-    } 
-    else if(userGuess > 3 || userGuess < 1){
-        resetGame();
-        alert("select the number between 1 to 3");
-        document.querySelector(".message").innerHTML="please choose number Between 1 to 3";
-        document.querySelector(".number").innerHTML="??";
-        document.querySelector("h1").innerHTML="choose your NUMBER,";
+document.querySelector(".check").addEventListener("click", function(){
+    const guessNumber = Number(document.querySelector(".guess").value);
+    console.log(typeof guessNumber, guessNumber)
+
+    if(!guessNumber){
+        document.querySelector(".message").textContent="No NUMBER"
     }
 
-    else{
-        document.querySelector(".message").innerHTML="WRONG, choose another Number";
-        document.body.style.backgroundColor="red";
-        document.querySelector(".number").innerHTML="❌";
-        document.querySelector("h1").innerHTML="WRONG";
-
+    else if(guessNumber === secretNum) {
+        document.querySelector(".message").textContent="Correct NUMBER";
+        userScore++;
+        document.querySelector(".score").textContent = userScore;
         setTimeout(function(){
-            resetGame();
-            document.querySelector("h1").innerHTML="Try Again! My number is, ";
-            document.querySelector(".number").innerHTML= randomNum();
-        }, 1500);
+            bodyGreen();
+            document.querySelector(".number").textContent=secretNum;
+            }, 400);
     }
+
+    else if(guessNumber > secretNum) {
+        if(userScore > 0){
+        document.querySelector(".message").textContent="too high";
+        userScore--;
+        document.querySelector(".score").textContent = userScore;
+        setTimeout(function(){
+            bodyRed();
+            document.querySelector(".number").textContent=secretNum;
+            }, 400);
+        } 
+        else {
+        document.querySelector(".message").textContent="you lost the GAME";
+        document.body.style.backgroundColor="purple";
+        document.querySelector(".number").textContent=0;
+        }
+    }
+
+    else if(guessNumber < secretNum) {
+        if(userScore > 0){
+        document.querySelector(".message").textContent="too low";
+        userScore--;
+        document.querySelector(".score").textContent = userScore;
+        setTimeout(function(){
+            bodyRed();
+            document.querySelector(".number").textContent=secretNum;
+            }, 400);
+        }
+        else {
+            document.querySelector(".message").textContent="you lost the GAME";
+            document.body.style.backgroundColor="purple";
+            document.querySelector(".number").textContent=0;
+        }
+    }
+
+    else if(guessNumber != secretNum) {
+        document.querySelector(".message").textContent="WRONG NUMBER";
+        document.querySelector(".number").textContent=secretNum;
+    }
+
 })
 
 document.querySelector(".again").addEventListener("click", function(){
-    location.reload();
+    document.body.style.backgroundColor="white";
+    document.querySelector("h1").textContent="NEW GAME.....";
+    document.querySelector(".number").textContent="0";
+    document.body.style.color="black";
+    setTimeout(function(){
+    location.reload();    
+    }, 2000);
+    
 })
-
-
-const resetGame = function(){
-    document.body.style.backgroundColor="black";
-    document.querySelector(".message").innerHTML="The game has started";
-    document.querySelector(".guess").value = ""; 
-    randomGenNum = randomNum();
-}
-
